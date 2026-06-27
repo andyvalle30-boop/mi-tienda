@@ -983,10 +983,29 @@
             transform: scale(1.2);
         }
 
-        @media (max-width: 600px) {
-            .navbar { padding: 10px 15px; }
+      @media (max-width: 600px) {
+            /* Menú superior: Lo apilamos para que los botones tengan espacio */
+            .navbar { 
+                padding: 10px 15px; 
+                flex-direction: column; 
+                gap: 12px;
+            }
+            .nav-right {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 8px;
+            }
             .nav-brand { font-size: 15px; }
             .btn-nav { padding: 6px 12px; font-size: 12px; }
+            
+            /* --- ARREGLO DEL BANNER GIGANTE --- */
+            .hero-banner {
+                height: 250px; /* Reducimos drásticamente la altura en celulares */
+                background-size: contain; /* Hace que la imagen se adapte sin cortarse */
+                background-color: #f6f5f3; /* Mismo fondo de la web por si quedan espacios laterales */
+            }
+
+            /* Resto de adaptaciones móviles que ya tenías */
             .search-sort-container { flex-direction: column; gap: 10px; }
             .search-box, .sort-button { width: 100%; max-width: 100%; }
             .products-container { grid-template-columns: repeat(2, 1fr); gap: 12px; }
