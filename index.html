@@ -1394,7 +1394,7 @@
                 const jsonPuro = JSON.parse(texto.substring(47, texto.length - 2));
                 const filas = jsonPuro.table.rows;
                 
-                productos = filas.map((fila, index) => {
+               productos = filas.map((fila, index) => {
                     const c = fila.c;
                     return {
                         id: index,
@@ -1403,9 +1403,10 @@
                         mensaje: c[2] && c[2].v ? String(c[2].v).trim() : '',
                         detalles: c[3] && c[3].v ? String(c[3].v).trim() : 'Sin descripción.',
                         categoria: c[4] && c[4].v ? String(c[4].v).trim() : '',
-                        stock: c[5] && c[5].v ? parseInt(c[5].v) : 0
+                        stock: c[5] && c[5].v ? parseInt(c[5].v) : 0,
+                        imagenUrl: c[6] && c[6].v ? String(c[6].v).trim() : '' // <-- NUEVA COLUMNA DE IMAGEN
                     };
-                }).filter(p => p.nombre !== ''); 
+                }).filter(p => p.nombre !== '');
 
            cargarCategorias(productos);
                 filterAndSort(); 
@@ -1520,9 +1521,10 @@
                     const subtotal = prod.precio * cant;
                     totalAcumulado += subtotal;
 
-                    const itemRow = document.createElement('div');
+                   const itemRow = document.createElement('div');
                     itemRow.classList.add('cart-item');
-                    const rutaImagen = `productos/${prod.nombre}/imagen.png`;
+                    // Prioriza la imagen de la base de datos si existe
+                    const rutaImagen = prod.imagenUrl ? prod.imagenUrl : `productos/${prod.nombre}/imagen.png`;
 
                     itemRow.innerHTML = `
                         <img src="${rutaImagen}" alt="${prod.nombre}" class="cart-item-img" onerror="this.src='kori.png';">
@@ -1695,10 +1697,23 @@
             for (let i = 1; i <= maxFotosAIntentar; i++) {
                 const imgCheck = new Image();
                 
-                // 👇 ESTE ES EL CAMBIO CLAVE 👇
-                // Si es la foto 1 busca 'imagen.png', de lo contrario busca '2.png', '3.png', etc.
-                const nombreArchivo = i === 1 ? 'imagen.png' : `${i}.png`;
-                const rutaIntento = `productos/${prod.nombre}/${nombreArchivo}`;
+                let rutaIntento = '';
+                if (i === 1) {
+                    // Usamos la variable 'prod' correcta de tu código
+                    let urlSheet = prod.imagenUrl ? prod.imagenUrl.trim() : '';
+                    
+                    // Convertir link de Google Drive a link directo si es necesario
+                    if (urlSheet.includes('drive.google.com')) {
+                        const idDrive = urlSheet.match(/\/d\/([^/]+)/);
+                        if (idDrive && idDrive[1]) {
+                            urlSheet = `https://docs.google.com/uc?export=view&id=${idDrive[1]}`;
+                        }
+                    }
+                    
+                    rutaIntento = urlSheet ? urlSheet : `productos/${prod.nombre}/imagen.png`;
+                } else {
+                    rutaIntento = `productos/${prod.nombre}/${i}.png`;
+                }
                 
                 imgCheck.src = rutaIntento;
                 
@@ -1899,7 +1914,8 @@
     productosPagina.forEach(prod => {
         const card = document.createElement('div');
         card.classList.add('product-card');
-        const rutaImagen = `productos/${prod.nombre}/imagen.png`;
+        // Si existe un link en Google Sheets, úsalo. Si no, busca en la carpeta local.
+        const rutaImagen = prod.imagenUrl ? prod.imagenUrl : `productos/${prod.nombre}/imagen.png`;
         const esDisponible = prod.stock > 0;
         
         card.innerHTML = `
