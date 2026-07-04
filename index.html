@@ -1394,8 +1394,19 @@
                 const jsonPuro = JSON.parse(texto.substring(47, texto.length - 2));
                 const filas = jsonPuro.table.rows;
                 
-               productos = filas.map((fila, index) => {
+             productos = filas.map((fila, index) => {
                     const c = fila.c;
+                    
+                    // Novedad: Recopilar todas las imágenes (Columnas G a K / índices 6 al 10)
+                    let imgUrls = [];
+                    for (let j = 6; j <= 10; j++) {
+                        if (c[j] && c[j].v) {
+                            // Separamos por comas por si pones varios links en una sola celda
+                            const links = String(c[j].v).split(',').map(s => s.trim()).filter(s => s);
+                            imgUrls.push(...links);
+                        }
+                    }
+
                     return {
                         id: index,
                         nombre: c[0] && c[0].v ? String(c[0].v).trim() : '',
@@ -1404,7 +1415,8 @@
                         detalles: c[3] && c[3].v ? String(c[3].v).trim() : 'Sin descripción.',
                         categoria: c[4] && c[4].v ? String(c[4].v).trim() : '',
                         stock: c[5] && c[5].v ? parseInt(c[5].v) : 0,
-                        imagenUrl: c[6] && c[6].v ? String(c[6].v).trim() : '' // <-- NUEVA COLUMNA DE IMAGEN
+                        imagenUrl: imgUrls.length > 0 ? imgUrls[0] : '', // La primera foto para la portada
+                        todasLasImagenes: imgUrls // Todo el arreglo para el carrusel de detalles
                     };
                 }).filter(p => p.nombre !== '');
 
@@ -1692,29 +1704,32 @@
             contenedorImagenes.innerHTML = '';
             botonesNav.forEach(btn => contenedorImagenes.appendChild(btn));
 
-            const maxFotosAIntentar = 5;
+            let listaIntentos = [];
 
-            for (let i = 1; i <= maxFotosAIntentar; i++) {
-                const imgCheck = new Image();
-                
-                let rutaIntento = '';
-                if (i === 1) {
-                    // Usamos la variable 'prod' correcta de tu código
-                    let urlSheet = prod.imagenUrl ? prod.imagenUrl.trim() : '';
-                    
-                    // Convertir link de Google Drive a link directo si es necesario
-                    if (urlSheet.includes('drive.google.com')) {
-                        const idDrive = urlSheet.match(/\/d\/([^/]+)/);
+            if (prod.todasLasImagenes && prod.todasLasImagenes.length > 0) {
+                // Usar todos los links que encuentre en el Google Sheet
+                listaIntentos = prod.todasLasImagenes.map(url => {
+                    let urlFinal = url;
+                    // Mantenemos tu lógica para convertir links de Google Drive a links directos
+                    if (urlFinal.includes('drive.google.com')) {
+                        const idDrive = urlFinal.match(/\/d\/([^/]+)/);
                         if (idDrive && idDrive[1]) {
-                            urlSheet = `https://docs.google.com/uc?export=view&id=${idDrive[1]}`;
+                            urlFinal = `https://docs.google.com/uc?export=view&id=${idDrive[1]}`;
                         }
                     }
-                    
-                    rutaIntento = urlSheet ? urlSheet : `productos/${prod.nombre}/imagen.png`;
-                } else {
-                    rutaIntento = `productos/${prod.nombre}/${i}.png`;
+                    return urlFinal;
+                });
+            } else {
+                // Fallback de seguridad: buscar en tu sistema de carpetas si la celda está vacía
+                const maxFotosAIntentar = 5;
+                for (let i = 1; i <= maxFotosAIntentar; i++) {
+                    listaIntentos.push(i === 1 ? `productos/${prod.nombre}/imagen.png` : `productos/${prod.nombre}/${i}.png`);
                 }
-                
+            }
+
+            // Cargar y renderizar el carrusel con las imágenes obtenidas
+            listaIntentos.forEach((rutaIntento, i) => {
+                const imgCheck = new Image();
                 imgCheck.src = rutaIntento;
                 
                 imgCheck.onload = function() {
@@ -1733,7 +1748,8 @@
                 };
 
                 imgCheck.onerror = function() {
-                    if (i === 1 && fotosProductoActual.length === 0) {
+                    // Si falla la primera imagen y no hay nada cargado, ponemos el logo por defecto
+                    if (i === 0 && fotosProductoActual.length === 0) {
                         fotosProductoActual.push('kori.png');
                         const respaldoImg = document.createElement('img');
                         respaldoImg.src = 'kori.png';
@@ -1743,7 +1759,7 @@
                         actualizarIndicadoresCarrusel();
                     }
                 };
-            }
+            });
 
             const btnAddAction = document.getElementById('btn-add-action');
             const btnWpDirect = document.getElementById('detail-whatsapp-btn');
