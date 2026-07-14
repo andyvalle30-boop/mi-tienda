@@ -1310,7 +1310,7 @@
         // ==========================================
         const SHEET_ID = '1TEgbXyWrAroBzBv8waZvGfLwLG7gGNvOJ2YU5fICqt4';
         const SHEET_TITLE = 'tienda jimmy';
-        const TELEFONO_WHATSAPP = '593998231372'; 
+        const TELEFONO_WHATSAPP = '593963040623'; 
         const ENLACE_PAGO_TARJETA = 'https://tu-enlace-de-pago.com'; 
         
         let productos = [];
@@ -1538,7 +1538,7 @@
                    const itemRow = document.createElement('div');
                     itemRow.classList.add('cart-item');
                     // Prioriza la imagen de la base de datos si existe
-                    const rutaImagen = prod.imagenUrl ? prod.imagenUrl : `productos/${prod.nombre}/imagen.png`;
+                    const rutaImagen = prod.imagenUrl ? prod.imagenUrl : `productos/${prod.nombre}/imagen.webp`;
 
                     itemRow.innerHTML = `
                         <img src="${rutaImagen}" alt="${prod.nombre}" class="cart-item-img" onerror="this.src='kori.png';">
@@ -1725,7 +1725,7 @@
                 // Fallback de seguridad: buscar en tu sistema de carpetas si la celda está vacía
                 const maxFotosAIntentar = 5;
                 for (let i = 1; i <= maxFotosAIntentar; i++) {
-                    listaIntentos.push(i === 1 ? `productos/${prod.nombre}/imagen.png` : `productos/${prod.nombre}/${i}.png`);
+                    listaIntentos.push(i === 1 ? `productos/${prod.nombre}/imagen.webp` : `productos/${prod.nombre}/${i}.webp`);
                 }
             }
 
@@ -1933,7 +1933,7 @@
         const card = document.createElement('div');
         card.classList.add('product-card');
         // Si existe un link en Google Sheets, úsalo. Si no, busca en la carpeta local.
-        const rutaImagen = prod.imagenUrl ? prod.imagenUrl : `productos/${prod.nombre}/imagen.png`;
+        const rutaImagen = prod.imagenUrl ? prod.imagenUrl : `productos/${prod.nombre}/imagen.webp`;
         const esDisponible = prod.stock > 0;
         
         card.innerHTML = `
