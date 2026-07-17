@@ -64,9 +64,11 @@
         }
 
         .nav-right {
+            position: absolute;
+            left: 50%;
             display: flex;
-            align-items: center;
-            gap: 12px;
+            transform: translateX(-50%);
+            gap: 15px;
         }
 
         .btn-nav {
@@ -397,14 +399,7 @@
         }
 
         /* --- BANNER PRINCIPAL --- */
-        .hero-banner {
-            width: 100%;
-            height: 100vh;
-            background-image: url(kori.png); 
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
+       
 
         /* --- SECCIÓN: BÚSQUEDA Y ORDEN --- */
         .search-sort-container {
@@ -833,6 +828,240 @@
             max-height: 90vh;
             animation: fadeIn 0.3s ease-out;
         }
+          .homepage {
+          display: flex;
+          justify-content: flex-start; 
+          gap: 35px;
+          margin-top: 25px; 
+          padding-right: 500px; 
+        }
+        
+        .homepage a {
+          text-decoration: None;
+          color: inherit;
+          font-weight: 500;
+          font-size: 23px;
+          transition: color 0.3s; 
+          font-family: Arial, sans-serif;
+        }
+           
+        .homepage a:hover {
+          color: #3e82ff; 
+        }
+          .homepage .linea-cata {
+            flex:1;
+            height: 1px;     
+            background: #d9d9d9;
+            margin: 15px 0;  
+        }
+
+        /* --- Sección Publicitaria --- */
+       .heroimg {
+            width: 100%;
+            display: flex; 
+            justify-content: center;
+            align-items: center;    
+            margin-top: 30px; 
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        /* --- Estilos del Carrusel --- */
+       .imagen-central-container {
+            width: 100%;
+            max-width: 900px; 
+            border-radius: 20px; 
+            box-shadow: 0 15px 25px rgba(0,0,0,0.2); 
+            overflow: hidden; 
+        }
+        
+       .imagen-central-container img {
+            width: 100%;
+            height: auto; 
+            display: block;
+            border-radius: 20px; 
+            transition: opacity 0.1s ease-in-out; 
+        }
+
+        /* =========================================
+           NUEVOS ESTILOS PARA CATEGORÍAS 
+           ========================================= */
+        /* =========================================
+           NUEVOS ESTILOS PARA CATEGORÍAS 
+           ========================================= */
+        .seccion-categorias {
+            width: 100%;             /* Obliga al contenedor a respetar el ancho de la pantalla */
+            max-width: 1100px;       /* Lo alinea con el resto de la página (carrusel y catálogo) */
+            padding: 20px 40px;
+            margin-top: 40px;
+            font-family: Arial, sans-serif;
+            box-sizing: border-box;  /* Evita que el padding sume ancho extra */
+        }
+        
+        .seccion-categorias a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .seccion-categorias a:hover {
+            color: #3e82ff; 
+        }
+        
+        .seccion-categorias .linea {
+            flex:1;
+            height: 1px;     
+            background: #d9d9d9;
+            margin: 15px 0;  
+        }
+
+        .titulo-categorias {
+            font-size: 22px;
+            font-weight: normal;
+            margin-bottom: 20px;
+            color: #000;
+            text-transform: uppercase;
+        }
+
+        .contenedor-botones {
+            display: flex;
+            overflow-x: auto; 
+            overflow-y: hidden; 
+            gap: 15px;
+            scroll-behavior: smooth; 
+            white-space: nowrap; 
+            width: 100%;             /* Se adapta al ancho exacto de la sección */
+            padding-bottom: 15px;    /* Da espacio para que no se coma el borde inferior por la barra de scroll */
+        }
+
+        /* Opcional: Para darle un diseño más limpio a la barra de scroll horizontal */
+        .contenedor-botones::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .contenedor-botones::-webkit-scrollbar-thumb {
+            background-color: #ccc;
+            border-radius: 4px;
+        }
+
+        .btn-categoria {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 125px 50px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: white;
+            box-sizing: border-box;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .btn-categoria:hover {
+            transform: translateY(-3px);
+            opacity: 0.9;
+        }
+
+        /* Colores de fondo de los botones */
+        .bg-celeste {
+            background-image: url('carrusel/fondo1.jpeg'); /* Color Tecnología y Electrohogar */
+            background-size: cover;
+        }
+        .bg-azul-oscuro {
+            background-color: #55aadd; /* Color Colchones, Hogar, Mujeres */
+        }
+
+        /* Tipografía de los botones */
+        .btn-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Ícono de flechita blanca dentro de los botones */
+        .icono-flecha {
+            width: 16px;
+            height: 16px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .bg-celeste .icono-flecha { color: #55aadd; }
+        .bg-azul-oscuro .icono-flecha { color: #0c3b4e; }
+        
+        .btn-subtitle {
+            font-size: 14px;
+            display: flex;
+            align-items: baseline;
+            gap: 4px;
+        }
+        
+        .txt-ligero {
+            font-weight: normal;
+            font-size: 12px;
+        }
+        
+        .txt-bold {
+            font-size: 22px;
+            font-weight: 900;
+        }
+
+        /* --- Pestaña "SUSCRÍBETE" --- */
+        .pestaña-suscribete {
+            position: fixed;
+            right: 0;
+            top: 50%; /* Centrado verticalmente */
+            background-color: #25d366; /* Color verde de WhatsApp */
+            color: #fff;
+            padding: 15px 5px;
+            writing-mode: vertical-rl;
+            transform: translateY(-50%) rotate(180deg); /* Lo gira para que se lea de abajo hacia arriba */
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            z-index: 1000;
+            border-radius: 8px; /* Bordes redondeados solo en la parte izquierda */
+        }
+         .site-footer {
+            background-color: #ffffff;
+            width: 100%;
+            padding: 40px 20px 20px 20px;
+            margin-top: 50px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .footer-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .footer-column { display: flex; flex-direction: column; gap: 15px; }
+        .footer-column h3 { font-size: 15px; font-weight: 700; color: #777; text-transform: uppercase; }
+        .footer-item { display: flex; align-items: center; gap: 12px; font-size: 14px; color: #555; }
+        .footer-item-text { font-size: 13.5px; color: #666; line-height: 1.6; }
+        .security-badges { display: flex; flex-direction: column; gap: 12px; }
+        .badge-ssl { border: 1px solid #b0b0b0; border-radius: 4px; padding: 4px 8px; display: flex; align-items: center; gap: 6px; font-size: 10px; font-weight: bold; background: #fafafa; }
+        .badge-ssl span { color: #777; font-weight: normal; }
+        .badge-safe { font-size: 11px; font-weight: 600; color: #444; }
+        .footer-bottom { max-width: 1100px; margin: 20px auto 0 auto; font-size: 13px; color: #888; }
+
+        @media (max-width: 850px) {
+            .footer-container { grid-template-columns: repeat(2, 1fr); }
+            
+        }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: scale(0.95); }
@@ -963,10 +1192,48 @@
         .badge-safe { font-size: 11px; font-weight: 600; color: #444; }
         .footer-bottom { max-width: 1100px; margin: 20px auto 0 auto; font-size: 13px; color: #888; }
 
-        @media (max-width: 850px) {
-            .footer-container { grid-template-columns: repeat(2, 1fr); }
-            .detail-main-layout { grid-template-columns: 1fr; gap: 20px; }
-            .detail-card { padding: 20px; }
+       @media (max-width: 600px) {
+            /* --- ARREGLO DE LA BARRA DE NAVEGACIÓN --- */
+            .navbar { 
+                padding: 15px 15px; 
+                flex-direction: column; 
+                gap: 12px;
+            }
+            .nav-right {
+                position: static;     /* Quita la posición absoluta que causaba la superposición */
+                transform: none;      /* Quita el centrado forzado */
+                width: 100%;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 8px;
+            }
+            .nav-brand { font-size: 16px; }
+            .btn-nav { padding: 8px 12px; font-size: 13px; }
+            
+            /* --- ARREGLO DEL TEXTO "IR AL CATÁLOGO" --- */
+            .homepage {
+                margin-top: 30px;      /* Reduce el margen superior que era muy grande */
+                padding-left: 20px;    /* Reduce el espacio a la izquierda */
+                padding-right: 20px;
+                gap: 15px;
+                align-items: center;
+            }
+            .homepage a {
+                font-size: 16px;       /* Achica la letra para que quepa en el celular */
+                white-space: nowrap;   /* Evita que la palabra "CATÁLOGO" se caiga a la siguiente línea */
+            }
+
+            /* --- ESTILOS EXISTENTES PARA MÓVIL --- */
+            .hero-banner {
+                height: 250px; 
+                background-size: contain; 
+                background-color: #f6f5f3; 
+            }
+            .search-sort-container { flex-direction: column; gap: 10px; }
+            .search-box, .sort-button, .category-sidebar { width: 100%; max-width: 100%; }
+            .products-container { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .product-image { height: 160px; }
+            .footer-container { grid-template-columns: 1fr; }
         }
 
         /* --- ESTILOS DEL CARRUSEL DE DETALLES --- */
@@ -1055,21 +1322,91 @@
 <body>
 
     <nav class="navbar">
-        <div class="nav-left" onclick="showStore()">
+        <div class="nav-left" onclick="showhome()">
             <img src="kori.png" alt="Logo" class="nav-logo">
             <span class="nav-brand">Kori Beauty</span>
         </div>
         
         <div class="nav-right">
-            <button id="btn-inicio" class="btn-nav active" onclick="showStore()">Inicio</button>
-            <button id="btn-about" class="btn-nav" onclick="showAbout()">Quiénes somos</button>
-            <button class="btn-nav" onclick="compartirPagina()">Compartir</button>
-            <button class="nav-icon" title="Descuentos">🏷️</button>
+            <button id="btn-inicio" class="btn-nav active" onclick="showhome()"><i class="fas fa-home"></i></button>
+            <button id="btn-buscar" class="btn-nav" onclick="showStore()"><i class="fas fa-search"></i></button>
+            <button id="btn-about" class="btn-nav" onclick="showAbout()"><i class="fas fa-info-circle"></i></button>
+            <button class="btn-nav" onclick="compartirPagina()"><i class="fas fa-share-alt"></i></button>
             <button class="nav-icon" title="Carrito" onclick="toggleCarrito(true)">
-                🛍️ <span id="cart-counter" class="cart-badge">0</span>
+                <i class="fas fa-shopping-cart"></i> <span id="cart-counter" class="cart-badge">0</span>
             </button>
         </div>
     </nav>
+   <div class="homepage" id="homepage">
+    <a href="#" onclick="showStore(); return false;">IR AL CATÁLOGO</a> 
+    <div class="linea-cata"></div>
+</div>
+    
+   <main>
+    <section class="heroimg">
+        <div class="imagen-central-container">
+            <a href="#" onclick="showStore(); return false;"> 
+                <img id="imagen-carrusel" src="carrusel/fondo1.jpeg" alt="Imagen publicitaria principal"> 
+            </a>
+        </div>
+    </section>
+</main>
+    
+    <section class="seccion-categorias">
+    <h2 class="titulo-categorias"><a href="#" onclick="showStore(); return false;">Categorías</a></h2>
+    <div class="linea"></div>
+    
+    <!-- Resto de los botones de categorías... -->
+        
+        <div class="contenedor-botones">
+            
+            <a href="#" class="btn-categoria bg-celeste">
+                <span class="btn-title">Tecnología <span class="icono-flecha">▸</span></span>
+                <span class="btn-subtitle">
+                    <span class="txt-ligero">HASTA</span> 
+                    <span class="txt-bold">20%</span> DTO.
+                </span>
+            </a>
+
+            <a href="#" class="btn-categoria bg-celeste">
+                <span class="btn-title">Electrohogar <span class="icono-flecha">▸</span></span>
+                <span class="btn-subtitle">
+                    <span class="txt-ligero">HASTA</span> 
+                    <span class="txt-bold">20%</span> DTO.
+                </span>
+            </a>
+
+            <a href="#" class="btn-categoria bg-azul-oscuro">
+                <span class="btn-title">Colchones <span class="icono-flecha">▸</span></span>
+                <span class="btn-subtitle">
+                    <span class="txt-ligero">HASTA</span> 
+                    <span class="txt-bold">25%</span> DTO.
+                </span>
+            </a>
+
+            <a href="#" class="btn-categoria bg-azul-oscuro">
+                <span class="btn-title">Hogar <span class="icono-flecha">▸</span></span>
+                <span class="btn-subtitle">
+                    <span class="txt-ligero">HASTA</span> 
+                    <span class="txt-bold">50%</span> DTO.
+                </span>
+            </a>
+
+            <a href="#" class="btn-categoria bg-azul-oscuro">
+                <span class="btn-title">Mujeres <span class="icono-flecha">▸</span></span>
+                <span class="btn-subtitle">
+                    <span class="txt-ligero">HASTA</span> 
+                    <span class="txt-bold">50%</span> DTO.
+                </span>
+            </a>
+
+        </div>
+    </section>
+    <a href="https://wa.me/593998231372" target="_blank">
+        <div class="pestaña-suscribete">
+            <span>whatsapp</span>
+        </div>
+    </a>
 
     <div id="cart-overlay" class="cart-overlay" onclick="toggleCarrito(false)">
         <div class="cart-sidebar" onclick="event.stopPropagation()">
@@ -1149,10 +1486,9 @@
         </div>
     </div>
 
-   <div class="hero-banner" id="hero-banner-section"></div>
+  <div class="hero-banner" id="hero-banner-section" style="display: none;"></div>
 
-    <div id="store-view" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
-        
+<div id="store-view" style="width: 100%; display: none; flex-direction: column; align-items: center;">
         <div class="search-sort-container">
             <div class="search-box">
                 <input type="text" id="search-input" placeholder="Buscar">
@@ -1298,6 +1634,48 @@
     </footer>
 
     <script>
+         const imagenes = [
+            'carrusel/fondo1.jpeg', 
+           
+            
+            'carrusel/fondo3.jpeg' 
+        ];
+        
+        let indiceActual = 0;
+        const imgElement = document.getElementById('imagen-carrusel');
+
+        setInterval(() => {
+            indiceActual = (indiceActual + 1) % imagenes.length;
+            imgElement.src = imagenes[indiceActual];
+        }, 2000); 
+      function showhome() {
+    // 1. Ocultamos las vistas de la tienda, detalles y sobre nosotros
+    
+    storeView.style.display = 'none';
+    aboutView.style.display = 'none';
+    detailView.style.display = 'none';
+    heroBanner.style.display = 'none';
+
+    // 2. Buscamos el contenedor 'homepage' por su clase y lo mostramos
+    const homepage = document.querySelector('.homepage');
+    if (homepage) {
+        // Usamos 'flex' en lugar de 'block' porque así está en tu CSS
+        homepage.style.display = 'flex'; 
+    }
+
+    // 3. Nos aseguramos de que el carrusel y las categorías también sean visibles
+    const heroImg = document.querySelector('.heroimg');
+    const categorias = document.querySelector('.seccion-categorias');
+    if (heroImg) heroImg.style.display = 'flex';
+    if (categorias) categorias.style.display = 'block';
+
+    // 4. Actualizamos el color del botón en la barra de navegación superior
+    document.getElementById('btn-inicio').classList.add('active');
+    document.getElementById('btn-about').classList.remove('active');
+
+    // 5. Subimos la pantalla suavemente hacia arriba
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
         function toggleCategorias(mostrar) {
             const overlay = document.getElementById('category-overlay');
             if (overlay) {
@@ -1335,11 +1713,13 @@
         const detailView = document.getElementById('detail-view');
         const heroBanner = document.getElementById('hero-banner-section');
         const btnInicio = document.getElementById('btn-inicio');
+        const homepage = document.getElementById('homepage');
         const btnAbout = document.getElementById('btn-about');
         const cartCounter = document.getElementById('cart-counter');
         const cartOverlay = document.getElementById('cart-overlay');
         const cartBody = document.getElementById('cart-body');
         const cartTotalVal = document.getElementById('cart-total-val');
+        const btnBuscar = document.getElementById('btn-buscar');
 
         function seleccionarCategoria(categoria) {
             categoriaSeleccionadaActual = categoria;
@@ -1437,18 +1817,6 @@
                 productsGrid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: #8b263e;">Error al conectar con la base de datos.</p>`;
             }
         }
-        function showStore() {
-    storeView.style.display = 'flex';
-    heroBanner.style.display = 'block';
-    aboutView.style.display = 'none';
-    detailView.style.display = 'none';
-    btnInicio.classList.add('active');
-    btnAbout.classList.remove('active');
-    if (searchInput) searchInput.value = "";
-    paginaActual = 1;  // <-- AÑADE ESTA LÍNEA AQUÍ
-    filterAndSort();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
 
         function guardarCarritoEnStorage() {
             localStorage.setItem('kori_carrito', JSON.stringify(carrito));
@@ -2020,22 +2388,42 @@ function cambiarPagina(num, event) {
             detailView.style.display = 'none';
             heroBanner.style.display = 'none';
             aboutView.style.display = 'block';
+            btnInicio.classList.remove('active'); // Apaga inicio
+            btnBuscar.classList.remove('active'); // Apaga buscar
             btnAbout.classList.add('active');
-            btnInicio.classList.remove('active');
             window.scrollTo({ top: 0, behavior: 'smooth' });
+            // Agrega esto dentro de showStore() y showAbout()
+const homepage = document.querySelector('.homepage');
+const heroImg = document.querySelector('.heroimg');
+const categorias = document.querySelector('.seccion-categorias');
+
+if (homepage) homepage.style.display = 'none';
+if (heroImg) heroImg.style.display = 'none';
+if (categorias) categorias.style.display = 'none';
         }
 
-        function showStore() {
-            storeView.style.display = 'flex';
-            heroBanner.style.display = 'block';
-            aboutView.style.display = 'none';
-            detailView.style.display = 'none';
-            btnInicio.classList.add('active');
-            btnAbout.classList.remove('active');
-            if (searchInput) searchInput.value = "";
-            filterAndSort();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+      function showStore() {
+    storeView.style.display = 'flex';
+    heroBanner.style.display = 'block';
+    aboutView.style.display = 'none';
+    detailView.style.display = 'none';
+   btnInicio.classList.remove('active'); // Apaga inicio
+    btnBuscar.classList.add('active');    // Enciende buscar
+    btnAbout.classList.remove('active');
+    
+    if (searchInput) searchInput.value = "";
+    paginaActual = 1;  
+    filterAndSort();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Agrega esto dentro de showStore() y showAbout()
+const homepage = document.querySelector('.homepage');
+const heroImg = document.querySelector('.heroimg');
+const categorias = document.querySelector('.seccion-categorias');
+
+if (homepage) homepage.style.display = 'none';
+if (heroImg) heroImg.style.display = 'none';
+if (categorias) categorias.style.display = 'none';
+}
 
         async function compartirPagina() {
             const datos = { title: 'Kori Beauty', text: '¡Mira los productos de Kori Beauty!', url: window.location.href };
@@ -2048,6 +2436,7 @@ function cambiarPagina(num, event) {
         }
 
         window.addEventListener('load', () => {
+            showhome();
             actualizarContadorCarrito();
             cargarInventarioDesdeSheets();
         });
