@@ -1402,7 +1402,7 @@
 
         </div>
     </section>
-    <a href="https://wa.me/593998231372" target="_blank">
+    <a href="https://wa.me/593963040623" target="_blank">
         <div class="pestaña-suscribete">
             <span>whatsapp</span>
         </div>
@@ -1655,6 +1655,9 @@
     aboutView.style.display = 'none';
     detailView.style.display = 'none';
     heroBanner.style.display = 'none';
+     btnInicio.classList.add('active'); // Apaga inicio
+    btnBuscar.classList.remove('active');    // Enciende buscar
+    btnAbout.classList.remove('active');
 
     // 2. Buscamos el contenedor 'homepage' por su clase y lo mostramos
     const homepage = document.querySelector('.homepage');
