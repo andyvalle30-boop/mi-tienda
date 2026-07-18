@@ -984,10 +984,40 @@
         }
 
         /* Colores de fondo de los botones */
-      .bg-celeste, .bg-azul-oscuro {
+      .tecnologia {
     /* Quita 'flex: 1' */
     width: 200px !important;
     background-image: url(categorias/tecnologia.webp);  /* Fuerza el ancho */
+    min-width: 200px;         /* Evita que se encojan */
+    height: 300px !important; /* Fuerza la altura */
+    background-size: cover;
+    background-position: center;
+    flex-shrink: 0;           /* IMPORTANTE: Esto evita que el flexbox los encoja */
+}
+.maquillajes {
+    /* Quita 'flex: 1' */
+    width: 200px !important;
+    background-image: url(carrusel/maquillajes.jpeg);  /* Fuerza el ancho */
+    min-width: 200px;         /* Evita que se encojan */
+    height: 300px !important; /* Fuerza la altura */
+    background-size: cover;
+    background-position: center;
+    flex-shrink: 0;           /* IMPORTANTE: Esto evita que el flexbox los encoja */
+}
+.longchamps {
+    /* Quita 'flex: 1' */
+    width: 200px !important;
+    background-image: url(carrusel/longchamp.jpeg);  /* Fuerza el ancho */
+    min-width: 200px;         /* Evita que se encojan */
+    height: 300px !important; /* Fuerza la altura */
+    background-size: cover;
+    background-position: center;
+    flex-shrink: 0;           /* IMPORTANTE: Esto evita que el flexbox los encoja */
+}
+.dysons {
+    /* Quita 'flex: 1' */
+    width: 200px !important;
+    background-image: url(carrusel/dysons.jpeg);  /* Fuerza el ancho */
     min-width: 200px;         /* Evita que se encojan */
     height: 300px !important; /* Fuerza la altura */
     background-size: cover;
@@ -1388,8 +1418,8 @@
         
         <div class="contenedor-botones">
             
-            <a href="#" class="btn-categoria bg-celeste">
-                <span class="btn-title">Tecnología <span class="icono-flecha">▸</span></span>
+            <a href="#" class="btn-categoria tecnologia">
+                <span class="btn-title">Tecnología</span>
                 <span class="btn-subtitle">
                     <span class="txt-ligero">HASTA</span> 
                     <span class="txt-bold">20%</span> DTO.
@@ -1397,24 +1427,24 @@
             </a>
 
 
-            <a href="#" class="btn-categoria bg-azul-oscuro">
-                <span class="btn-title">Colchones <span class="icono-flecha">▸</span></span>
+            <a href="#" class="btn-categoria maquillajes">
+                <span class="btn-title">MAQUILLAJES</span></span>
                 <span class="btn-subtitle">
                     <span class="txt-ligero">HASTA</span> 
                     <span class="txt-bold">25%</span> DTO.
                 </span>
             </a>
 
-            <a href="#" class="btn-categoria bg-azul-oscuro">
-                <span class="btn-title">Hogar <span class="icono-flecha">▸</span></span>
+            <a href="#" class="btn-categoria dysons">
+                <span class="btn-title">DYSONS </span>
                 <span class="btn-subtitle">
                     <span class="txt-ligero">HASTA</span> 
                     <span class="txt-bold">50%</span> DTO.
                 </span>
             </a>
 
-            <a href="#" class="btn-categoria bg-azul-oscuro">
-                <span class="btn-title">Mujeres <span class="icono-flecha">▸</span></span>
+            <a href="#" class="btn-categoria longchamps">
+                <span class="btn-title">LONGCHAMPS </span>
                 <span class="btn-subtitle">
                     <span class="txt-ligero">HASTA</span> 
                     <span class="txt-bold">50%</span> DTO.
