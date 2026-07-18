@@ -859,36 +859,35 @@
        .heroimg {
             width: 100%;
             display: flex; 
+            height: 400px;
             justify-content: center;
             align-items: center;    
             margin-top: 30px; 
             padding: 0 20px;
             box-sizing: border-box;
+            object-fit: cover;
         }
 
         /* --- Estilos del Carrusel --- */
        .imagen-central-container {
             width: 100%;
             max-width: 900px; 
+            height: 400px;
             border-radius: 20px; 
             box-shadow: 0 15px 25px rgba(0,0,0,0.2); 
             overflow: hidden; 
+            display: block;
         }
         
        .imagen-central-container img {
             width: 100%;
-            height: auto; 
+            height: 100%; 
             display: block;
+            object-fit: cover;
             border-radius: 20px; 
             transition: opacity 0.1s ease-in-out; 
         }
 
-        /* =========================================
-           NUEVOS ESTILOS PARA CATEGORÍAS 
-           ========================================= */
-        /* =========================================
-           NUEVOS ESTILOS PARA CATEGORÍAS 
-           ========================================= */
         .seccion-categorias {
             width: 100%;             /* Obliga al contenedor a respetar el ancho de la pantalla */
             max-width: 1100px;       /* Lo alinea con el resto de la página (carrusel y catálogo) */
@@ -963,7 +962,7 @@
 
         /* Colores de fondo de los botones */
         .bg-celeste {
-            background-image: url('carrusel/fondo1.jpeg'); /* Color Tecnología y Electrohogar */
+            background-image: url('carrusel/fondo1.webp'); /* Color Tecnología y Electrohogar */
             background-size: cover;
         }
         .bg-azul-oscuro {
@@ -1030,13 +1029,7 @@
             z-index: 1000;
             border-radius: 8px; /* Bordes redondeados solo en la parte izquierda */
         }
-         .site-footer {
-            background-color: #ffffff;
-            width: 100%;
-            padding: 40px 20px 20px 20px;
-            margin-top: 50px;
-            border-top: 1px solid #e0e0e0;
-        }
+
 
         .footer-container {
             max-width: 1100px;
@@ -1342,7 +1335,7 @@
         </div>
     </nav>
    <div class="homepage" id="homepage">
-    <a href="#" onclick="showStore(); return false;">IR AL CATÁLOGO</a> 
+    <a href="#" onclick="showStore(); return false;"></a> 
     <div class="linea-cata"></div>
 </div>
     
@@ -1350,7 +1343,7 @@
     <section class="heroimg">
         <div class="imagen-central-container">
             <a href="#" onclick="showStore(); return false;"> 
-                <img id="imagen-carrusel" src="carrusel/fondo1.jpeg" alt="Imagen publicitaria principal"> 
+                <img id="imagen-carrusel" src="carrusel/fondo1.webp" alt="Imagen publicitaria principal"> 
             </a>
         </div>
     </section>
@@ -1639,10 +1632,10 @@
 
     <script>
          const imagenes = [
-            'carrusel/fondo1.jpeg', 
+            'carrusel/fondo1.webp', 
            
             
-            'carrusel/fondo3.jpeg' 
+            'carrusel/fondo2.webp' 
         ];
         
         let indiceActual = 0;
@@ -1651,7 +1644,7 @@
         setInterval(() => {
             indiceActual = (indiceActual + 1) % imagenes.length;
             imgElement.src = imagenes[indiceActual];
-        }, 2000); 
+        }, 2500); 
       function showhome() {
     // 1. Ocultamos las vistas de la tienda, detalles y sobre nosotros
     
@@ -2341,12 +2334,12 @@ function generarPaginacion(totalProductos) {
     }
 
     // Lógica para mostrar máximo 7 páginas
-    let inicio = Math.max(1, paginaActual - 3);
-    let fin = Math.min(totalPaginas, inicio + 6);
+    let inicio = Math.max(1, paginaActual - 2);
+    let fin = Math.min(totalPaginas, inicio + 4);
     
     // Ajustar si estamos cerca del final
-    if (fin - inicio < 6 && totalPaginas > 7) {
-        inicio = totalPaginas - 6;
+    if (fin - inicio < 4 && totalPaginas > 5) {
+        inicio = totalPaginas - 4;
     }
 
     for (let i = inicio; i <= fin; i++) {
