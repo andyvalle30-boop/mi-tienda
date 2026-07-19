@@ -920,6 +920,18 @@
             color: #000;
             text-transform: uppercase;
         }
+        .tecnologia,.maquillajes, .dysons, .longchamps, .hogar 
+         {
+            border-radius: 15px; 
+
+    /* 2. SOMBRA SUAVE */
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15); 
+
+    /* 3. CONTENCIÓN DE LA IMAGEN */
+    overflow: hidden; 
+
+        }
+        
         .productos-hot {
             width: 85%;
             align-items: flex-start;
@@ -963,68 +975,16 @@
             background-color: #ccc;
             border-radius: 4px;
         }
-
-        .btn-categoria {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 125px 25px;
-          
-            border-radius: 12px;
-            text-decoration: none;
-            color: white;
-            box-sizing: border-box;
-            transition: transform 0.2s, opacity 0.2s;
-        }
-
-        .btn-categoria:hover {
-            transform: translateY(-3px);
-            opacity: 0.9;
-        }
-
-        /* Colores de fondo de los botones */
-      .tecnologia {
-    /* Quita 'flex: 1' */
+/* Agrupamos el diseño de todos los botones de categoría aquí */
+.btn-categoria {
     width: 200px !important;
-    background-image: url(categorias/tecnologia.webp);  /* Fuerza el ancho */
-    min-width: 200px;         /* Evita que se encojan */
-    height: 300px !important; /* Fuerza la altura */
+    min-width: 200px;
+    height: 300px !important;
     background-size: cover;
     background-position: center;
-    flex-shrink: 0;           /* IMPORTANTE: Esto evita que el flexbox los encoja */
+    flex-shrink: 0;
+    /* BORRAMOS los background-image, ahora los pondrá JavaScript */
 }
-.maquillajes {
-    /* Quita 'flex: 1' */
-    width: 200px !important;
-    background-image: url(carrusel/maquillajes.jpeg);  /* Fuerza el ancho */
-    min-width: 200px;         /* Evita que se encojan */
-    height: 300px !important; /* Fuerza la altura */
-    background-size: cover;
-    background-position: center;
-    flex-shrink: 0;           /* IMPORTANTE: Esto evita que el flexbox los encoja */
-}
-.longchamps {
-    /* Quita 'flex: 1' */
-    width: 200px !important;
-    background-image: url(carrusel/longchamp.jpeg);  /* Fuerza el ancho */
-    min-width: 200px;         /* Evita que se encojan */
-    height: 300px !important; /* Fuerza la altura */
-    background-size: cover;
-    background-position: center;
-    flex-shrink: 0;           /* IMPORTANTE: Esto evita que el flexbox los encoja */
-}
-.dysons {
-    /* Quita 'flex: 1' */
-    width: 200px !important;
-    background-image: url(carrusel/dysons.jpeg);  /* Fuerza el ancho */
-    min-width: 200px;         /* Evita que se encojan */
-    height: 300px !important; /* Fuerza la altura */
-    background-size: cover;
-    background-position: center;
-    flex-shrink: 0;           /* IMPORTANTE: Esto evita que el flexbox los encoja */
-}
-
         /* Tipografía de los botones */
         .btn-title {
             font-size: 25px;
@@ -1404,7 +1364,7 @@
     <section class="heroimg">
         <div class="imagen-central-container">
             <a href="#" onclick="showStore(); return false;"> 
-                <img id="imagen-carrusel" src="carrusel/fondo1.webp" alt="Imagen publicitaria principal"> 
+                <img id="imagen-carrusel" src="fondo1.webp" alt="Imagen publicitaria principal"> 
             </a>
         </div>
     </section>
@@ -1418,38 +1378,11 @@
         
         <div class="contenedor-botones">
             
-            <a href="#" class="btn-categoria tecnologia">
-                <span class="btn-title">Tecnología</span>
-                <span class="btn-subtitle">
-                    <span class="txt-ligero">HASTA</span> 
-                    <span class="txt-bold">20%</span> DTO.
-                </span>
-            </a>
-
-
-            <a href="#" class="btn-categoria maquillajes">
-                <span class="btn-title">MAQUILLAJES</span></span>
-                <span class="btn-subtitle">
-                    <span class="txt-ligero">HASTA</span> 
-                    <span class="txt-bold">25%</span> DTO.
-                </span>
-            </a>
-
-            <a href="#" class="btn-categoria dysons">
-                <span class="btn-title">DYSONS </span>
-                <span class="btn-subtitle">
-                    <span class="txt-ligero">HASTA</span> 
-                    <span class="txt-bold">50%</span> DTO.
-                </span>
-            </a>
-
-            <a href="#" class="btn-categoria longchamps">
-                <span class="btn-title">LONGCHAMPS </span>
-                <span class="btn-subtitle">
-                    <span class="txt-ligero">HASTA</span> 
-                    <span class="txt-bold">50%</span> DTO.
-                </span>
-            </a>
+            <a href="#" class="btn-categoria tecnologia"></a>
+            <a href="#" class="btn-categoria maquillajes"></a>
+            <a href="#" class="btn-categoria dysons"></a>
+            <a href="#" class="btn-categoria longchamps"></a>
+            <a href="#" class="btn-categoria hogar"></a>
 
         </div>
     </section>
@@ -1692,20 +1625,7 @@
         <div class="footer-bottom">@2026. Kori Beauty. Todos los derechos reservados.</div>
     </footer>
 
-    <script>
-         const imagenes = [
-            'carrusel/fondo1.webp', 
-            'carrusel/fondo2.webp',
-            'carrusel/fondo3.webp'
-        ];
-        
-        let indiceActual = 0;
-        const imgElement = document.getElementById('imagen-carrusel');
-
-        setInterval(() => {
-            indiceActual = (indiceActual + 1) % imagenes.length;
-            imgElement.src = imagenes[indiceActual];
-        }, 2500); 
+    <script> 
      function showhome() {
     // 1. Ocultamos las vistas de la tienda, detalles y sobre nosotros
     storeView.style.display = 'none';
@@ -1811,6 +1731,103 @@
     paginaActual = 1; // Reiniciar a la primera página al buscar
     filterAndSort();
 });
+async function cargarImagenHome() {
+    const tqUrl = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=Sheet2`;
+
+    try {
+        const response = await fetch(tqUrl);
+        const csvText = await response.text();
+        
+        const filas = csvText.split(/\r?\n/);
+        if (filas.length < 2) return; 
+
+        const separarColumnas = (fila) => {
+            const celdas = [];
+            let celdaActual = '';
+            let dentroDeComillas = false;
+            
+            for (let i = 0; i < fila.length; i++) {
+                const char = fila[i];
+                if (char === '"') {
+                    dentroDeComillas = !dentroDeComillas; 
+                } else if (char === ',' && !dentroDeComillas) {
+                    celdas.push(celdaActual);
+                    celdaActual = '';
+                } else {
+                    celdaActual += char;
+                }
+            }
+            celdas.push(celdaActual); 
+            return celdas.map(c => c.trim());
+        };
+
+        const encabezados = separarColumnas(filas[0]).map(celda => 
+            celda.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+        );
+        
+        const urls = separarColumnas(filas[1]);
+
+        for (let i = 0; i < encabezados.length; i++) {
+            const elemento = encabezados[i];
+            const urlImagen = urls[i];
+
+            if (elemento && urlImagen) {
+                // Caso 1: La imagen del carrusel (Manejo de múltiples imágenes)
+                if (elemento.includes("carrusel") || elemento === "banner") {
+                    const imagenPrincipal = document.getElementById('imagen-carrusel');
+                    if (imagenPrincipal) {
+                        // Separamos los links por comas, espacios o saltos de línea y filtramos los válidos
+                        const enlacesCarrusel = urlImagen.split(/[,\s\n]+/).filter(url => url.includes('http'));
+                        
+                        if (enlacesCarrusel.length > 0) {
+                            // 1. Mostramos la primera imagen de inmediato
+                            imagenPrincipal.src = enlacesCarrusel[0]; 
+                            
+                            // 2. Si hay más de una imagen, iniciamos el cambio automático
+                            if (enlacesCarrusel.length > 1) {
+                                let indice = 0;
+                                
+                                // Le damos un efecto de transición suave por código
+                                imagenPrincipal.style.transition = "opacity 0.4s ease-in-out"; 
+                                
+                                // Configuramos el temporizador
+                                setInterval(() => {
+                                    // Ocultamos un poco la imagen
+                                    imagenPrincipal.style.opacity = 0.2; 
+                                    
+                                    setTimeout(() => {
+                                        // Cambiamos el link de la imagen
+                                        indice = (indice + 1) % enlacesCarrusel.length;
+                                        imagenPrincipal.src = enlacesCarrusel[indice];
+                                        
+                                        // Volvemos a mostrarla a opacidad completa
+                                        imagenPrincipal.style.opacity = 1; 
+                                    }, 400); // Espera 400ms mientras hace el efecto de desaparecer
+                                    
+                                }, 3500); // Cambia la imagen cada 3.5 segundos (puedes ajustar este número)
+                            }
+                        }
+                    }
+                } 
+                // Caso 2: Las categorías (Mantiene solo el primer enlace por seguridad)
+                else {
+                    let urlLimpia = urlImagen;
+                    if (urlImagen.includes('http') && urlImagen.includes(',')) {
+                        urlLimpia = urlImagen.split(',')[0].trim();
+                    }
+
+                    const claseCategoria = elemento.replace(/\s+/g, ''); 
+                    const categoriaElemento = document.querySelector(`.${claseCategoria}`);
+                    if (categoriaElemento) {
+                        categoriaElemento.style.backgroundImage = `url('${urlLimpia}')`;
+                    }
+                }
+            }
+        }
+    } catch (error) {
+        console.error("Error al cargar la configuración desde Sheet2:", error);
+    }
+}
 
      function cargarCategorias(listaProductos) {
     const categoryList = document.getElementById('category-list');
@@ -2589,6 +2606,7 @@ function renderProductosHot() {
             showhome();
             actualizarContadorCarrito();
             cargarInventarioDesdeSheets();
+            cargarImagenHome();
         });
     </script>
 </body>
