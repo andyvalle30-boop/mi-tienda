@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="kori2.png">
     <title>Kori Beauty - Productos</title>
       <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -1415,7 +1416,7 @@
                 <button class="btn-checkout-wp" onclick="abrirCheckout('whatsapp', 'carrito')">
                     💬 ENVIAR PEDIDO POR WHATSAPP
                 </button>
-                <button class="btn-checkout-card" onclick="abrirCheckout('tarjeta', 'carrito')">
+                <button disabled class="btn-checkout-card" onclick="abrirCheckout('tarjeta', 'carrito')">
                     💳 PAGAR AHORA CON TARJETA
                 </button>
             </div>
@@ -1804,7 +1805,7 @@ async function cargarImagenHome() {
                                         imagenPrincipal.style.opacity = 1; 
                                     }, 400); // Espera 400ms mientras hace el efecto de desaparecer
                                     
-                                }, 3500); // Cambia la imagen cada 3.5 segundos (puedes ajustar este número)
+                                }, 3000); // Cambia la imagen cada 3.5 segundos (puedes ajustar este número)
                             }
                         }
                     }
@@ -2035,9 +2036,10 @@ async function cargarImagenHome() {
                 btnFinalizar.style.color = '#ffffff';
             } else {
                 document.getElementById('checkout-title').innerText = '💳 Detalles de la Compra (Pago con Tarjeta)';
-                btnFinalizar.innerHTML = '🔒 PAGAR AHORA CON TARJETA';
-                btnFinalizar.style.backgroundColor = '#1a1a1a';
-                btnFinalizar.style.color = '#ffffff';
+                // ... dentro del bloque else de la línea 2036
+btnFinalizar.disabled = true; // Esto deshabilitará el botón físicamente
+btnFinalizar.style.opacity = "0.5"; // Esto le dará un aspecto visual de "inactivo"
+btnFinalizar.style.cursor = "not-allowed"; // Cambia el cursor al pasar por encima
             }
 
             document.getElementById('checkout-modal').style.display = 'flex';
